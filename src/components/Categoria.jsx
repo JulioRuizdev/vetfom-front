@@ -1,8 +1,11 @@
-import React from 'react'
+import useQuiosco from "../hooks/useQuiosco"
+
+
 
 export default function Categoria({categoria}) {
 
-    const {icono, id, nombre} = categoria
+  const {handleClickCategoria} = useQuiosco()
+  const {icono, id, nombre} = categoria
   return (
     <div className='flex items-center gap-4 borde w-full p-3 hover:bg-green-300 cursor-pointer'>
         <img 
@@ -11,7 +14,13 @@ export default function Categoria({categoria}) {
         className='w-12'
         />
 
-        <p className='text-lg'>{nombre}</p>
+        <button className='text-lg'
+          type="button"
+          onClick={() => handleClickCategoria(id)}
+        >
+
+          {nombre}
+          </button>
         
     </div>
   )
