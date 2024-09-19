@@ -11,7 +11,8 @@ const QuioscoProvider = ({children}) => {
 
 
     const handleClickCategoria = (id) => {
-        console.log(id)
+        const categoria = categorias.filter(categoria => categoria.id === id)[0]
+        setCategorialActual(categoria)
     }
 
     return (
