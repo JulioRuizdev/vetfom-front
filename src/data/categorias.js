@@ -22,7 +22,7 @@ const categorias = [
         id: 4
       },
       {
-        icono: "juguetes",
+        icono: "accesorios",
         nombre: "Accesorios",
         id: 5
       },
