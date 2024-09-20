@@ -12,20 +12,18 @@ export default function Categoria({categoria}) {
   }
   return (
     <div className={`${resaltarCategoria()} flex items-center gap-4 borde w-full p-3 hover:bg-green-300 cursor-pointer`}>
+      <button
+        className='text-lg flex items-center gap-4 w-full'
+        type="button"
+        onClick={() => handleClickCategoria(id)}
+      >
         <img 
-        alt="Imagen Icono"
-        src={`/img/ico_${icono}.svg`}
-        className='w-12'
+          alt="Imagen Icono"
+          src={`/img/ico_${icono}.svg`}
+          className='w-12'
         />
-
-        <button className='text-lg'
-          type="button"
-          onClick={() => handleClickCategoria(id)}
-        >
-
-          {nombre}
-          </button>
-        
+        {nombre}
+      </button>
     </div>
   )
 }
