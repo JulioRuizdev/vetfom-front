@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function ModalProducto() {
 
-    const { producto, handleClickModal } = useQuiosco();
+    const { producto, handleClickModal, handleAgregarPedido } = useQuiosco();
     const [cantidad, setCantidad] = useState(1);
 
 return (
@@ -61,6 +61,8 @@ return (
             <button 
                 type="button"
                 className="bg-indigo-600 hover:bg-indigo-800 text-white w-full p-3 rounded-lg mt-5 uppercase font-bold"
+                onClick={() => {handleAgregarPedido({...producto, cantidad})
+                 handleClickModal()}}
             >
                 Añadir al carrito
             </button>
