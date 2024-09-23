@@ -4,7 +4,7 @@ import useQuiosco from "../hooks/useQuiosco";
 
 export default function ResumenProducto({producto}) {
 
-  const { handleEditarPedido } = useQuiosco();
+  const { handleEditarPedido, handleEliminarProductoPedido } = useQuiosco();
 
   const {id, nombre, precio, cantidad} = producto;
   return (
