@@ -16,6 +16,7 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.26.2",
     "react-toastify": "^10.0.5",
+    "swr": "^2.2.5",
     "vetfom-front": "file:"
   },
   "devDependencies": {
