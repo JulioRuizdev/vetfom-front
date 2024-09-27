@@ -102,7 +102,7 @@ export default function Registro() {
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Tu password"
+                        placeholder="Tu contraseña debe contener minimo 1 simbolo y 1 numero"
                         className="w-full border border-gray-200 p-2 rounded-md"
                         ref={passwordRef}
                     />
