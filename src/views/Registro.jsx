@@ -28,13 +28,12 @@ export default function Registro() {
 
         }
         try {
-            const respuesta = await ClienteAxios.post('/api/registro', datos);
-            console.log(respuesta);
+            const {data} = await ClienteAxios.post('/api/registro', datos);
+            console.log(data.token);
+            setErrores([]);
         } catch (error) {
             if (error.response && error.response.data && error.response.data.errors) {
                 setErrores(Object.values(error.response.data.errors));
-            } else {
-                setErrores(['Ocurrió un error inesperado. Intenta de nuevo.']);
             }
             console.error("Error en la solicitud:", error);
         }
