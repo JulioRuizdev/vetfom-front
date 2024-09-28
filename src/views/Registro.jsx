@@ -68,7 +68,7 @@ export default function Registro() {
             
                 </div>
                 <div className="mb-4"> 
-                    <label className="text-slate-800" htmlFor="password_confirmation">
+                    <label className="text-slate-800" htmlFor="phone">
                         Telefono:</label> 
                     <input
                         type="phone"
