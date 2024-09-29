@@ -1,26 +1,48 @@
 import { Link } from 'react-router-dom';
+import { createRef, useState } from 'react';
+import ClienteAxios from '../config/axios';
+import Alerta from '../components/Alerta';
 
 export default function Login() {
+    
+    const emailRef = createRef();
+    const passwordRef = createRef();
+
+    const  [errores, setErrores] = useState([]);
+    
+    const handleSubmit = async e =>{
+        e.preventDefault();
+
+
+        const datos ={
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+
+        }
+        try {
+            const {data} = await ClienteAxios.post('/api/login', datos);
+            localStorage.setItem('AUTH_TOKEN', data.token);
+            setErrores([]);
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.errors) {
+                setErrores(Object.values(error.response.data.errors));
+            }
+            console.error("Error en la solicitud:", error);
+        }
+    }
   return (
     <>
         <h1 className="text-4xl font-black">Iniciar Sesion</h1>
         <p>Para generar pedido debes iniciar sesion</p>
 
         <div className="bg-white shadow-md rounded-md mt-10 px-5 py-10" >
-            <form>
+            <form
+                onSubmit={handleSubmit}
+                noValidate
+            >
+                {errores ? errores.map((error, i) => <Alerta key={i}>{error}</Alerta>) : null}
 
-                <div className="mb-4"> 
-                    <label className="text-slate-800" htmlFor="name">
-                        Nombre:</label> 
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Tu nombre"
-                        className="w-full border border-gray-200 p-2 rounded-md"
-                    />
             
-                </div>
                 <div className="mb-4"> 
                     <label className="text-slate-800" htmlFor="email">
                         Email:</label> 
@@ -30,35 +52,25 @@ export default function Login() {
                         name="email"
                         placeholder="Tu email"
                         className="w-full border border-gray-200 p-2 rounded-md"
+                        ref={emailRef}
                     />
             
                 </div>
                 <div className="mb-4"> 
                     <label className="text-slate-800" htmlFor="password">
-                        Password:</label> 
+                        Contraseña:</label> 
                     <input
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Tu password"
+                        placeholder="Tu Contraseña"
                         className="w-full border border-gray-200 p-2 rounded-md"
-                    />
-            
-                </div>
-                <div className="mb-4"> 
-                    <label className="text-slate-800" htmlFor="password_confirmation">
-                        Repetir Password:</label> 
-                    <input
-                        type="password"
-                        id="password_confirmation"
-                        name="password_confirmation"
-                        placeholder="Repetir Password"
-                        className="w-full border border-gray-200 p-2 rounded-md"
+                        ref={passwordRef}
                     />
             
                 </div>
 
-                <input type="submit" value="Crear cuenta" className="bg-blue-500 hover:bg-blue-700 text-white w-full font-bold py-2 px-4 rounded-md cursor-pointer" />
+                <input type="submit" value="Iniciar Sesion" className="bg-blue-500 hover:bg-blue-700 text-white w-full font-bold py-2 px-4 rounded-md cursor-pointer" />
             </form>
         </div>
 

@@ -96,12 +96,12 @@ export default function Registro() {
                 </div>
                 <div className="mb-4"> 
                     <label className="text-slate-800" htmlFor="password">
-                        Password:</label> 
+                        Contraseña:</label> 
                     <input
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Tu contraseña debe contener minimo 1 simbolo y 1 numero"
+                        placeholder="Minimo 1 simbolo y 1 numero"
                         className="w-full border border-gray-200 p-2 rounded-md"
                         ref={passwordRef}
                     />
@@ -109,12 +109,12 @@ export default function Registro() {
                 </div>
                 <div className="mb-4"> 
                     <label className="text-slate-800" htmlFor="password_confirmation">
-                        Repetir Password:</label> 
+                        Repetir Contraseña:</label> 
                     <input
                         type="password"
                         id="password_confirmation"
                         name="password_confirmation"
-                        placeholder="Repetir Password"
+                        placeholder="Repetir Contraseña"
                         className="w-full border border-gray-200 p-2 rounded-md"
                         ref={passwordConfirmationRef}
                     />
