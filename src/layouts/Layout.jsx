@@ -6,6 +6,7 @@ import Resumen from '../components/Resumen'
 import useQuiosco from '../hooks/useQuiosco'
 import Modal from 'react-modal'
 import ModalProducto from '../components/ModalProducto'
+import { useAuth } from '../hooks/useAuth'
 
 
 const customStyles = {
@@ -23,7 +24,12 @@ Modal.setAppElement("#root");
 
 export default function Layout() {
 
+  const {user, error} = useAuth({middleware: 'auth'});
   const { modal } = useQuiosco();
+
+  console.log(user);
+  console.log(error);
+  
 
 
   return (
