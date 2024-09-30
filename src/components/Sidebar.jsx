@@ -5,7 +5,7 @@ import { useAuth } from "../hooks/useAuth";
 
 export default function Sidebar() {
     const {categorias} = useQuisco();
-    const {logout} = useAuth({middleware: 'auth'});
+    const {logout, user} = useAuth({middleware: 'auth'});
 
 
   return (
@@ -16,6 +16,8 @@ export default function Sidebar() {
                 src="img/vetfom.jpg"
             />
         </div>
+
+        <p className=" text-xl text-center">Hola: {user?.name}</p>
 
         <div className="mt-10">
             {categorias.map(categoria => (

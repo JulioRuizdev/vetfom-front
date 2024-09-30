@@ -51,7 +51,19 @@ export const useAuth = ({ middleware, url}) => {
         }
     }
 
-    const register = () => {}
+    const register = async (datos, setErrores) => {
+        try {
+            const {data} = await ClienteAxios.post('/api/registro', datos);
+            localStorage.setItem('AUTH_TOKEN', data.token);
+            setErrores([]);
+            await mutate();
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.errors) {
+                setErrores(Object.values(error.response.data.errors));
+            }
+            console.error("Error en la solicitud:", error);
+        }
+    }
 
     console.log(user);
     console.log(error);
