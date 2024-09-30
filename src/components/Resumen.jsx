@@ -4,11 +4,16 @@ import ResumenProducto from "./ResumenProducto";
 
 export default function Resumen() {
   
-  const { pedido, total } = useQuiosco();
+  const { pedido, total, handleSubmitNuevaOrden } = useQuiosco();
 
   const comprobarPedido = () => pedido.length === 0;
 
-  console.log(comprobarPedido());
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    handleSubmitNuevaOrden();
+    
+  }
 
   return (
   <aside className="md:w-72 h-screen overflow-y-scroll p-5">
@@ -36,7 +41,9 @@ export default function Resumen() {
     {formatearDinero(total)}
     </p>
 
-    <form className="w-full">
+    <form className="w-full"
+    onClick={handleSubmit}
+    >
     <div className="mt-5">
       <input type="submit" 
       className={`${comprobarPedido() ? 'bg-indigo-100' : 'bg-indigo-600 hover:bg-indigo-900' } cursor-pointer 
