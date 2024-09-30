@@ -1,9 +1,11 @@
 import useQuisco from "../hooks/useQuiosco"
 import Categoria from "./Categoria"
+import { useAuth } from "../hooks/useAuth";
 
 
 export default function Sidebar() {
     const {categorias} = useQuisco();
+    const {logout} = useAuth({middleware: 'auth'});
 
 
   return (
@@ -30,10 +32,10 @@ export default function Sidebar() {
         <div className="mt-10">
             <button
                 className=" text-center bg-red-500 text-white p-2 w-full truncate"
-            
+            onClick={logout}
             >Cerrar Sesión
             </button>
-           </div>         
+        </div>         
     </aside>
   )
 }
